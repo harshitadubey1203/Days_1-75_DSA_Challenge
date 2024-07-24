@@ -1,0 +1,27 @@
+//Brute Force Approach
+
+class Solution {
+    public int minInsertions(String s) {
+        Stack<Character> stk=new Stack<>();
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                stk.push(s.charAt(i));
+            }
+            else {
+                if(i+1<s.length() && s.charAt(i+1)==')'){
+                i++;
+                }
+                else {
+                    count++;
+                    }
+               if(!stk.isEmpty()){
+                stk.pop();
+               }
+               else count++;
+            }
+        }
+        
+        return count+2*stk.size();
+    }
+}
